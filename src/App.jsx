@@ -1,13 +1,11 @@
 import Routers from "./routers/Routers.jsx";
 
-
 const App = () => {
-
   return (
-      <>
-          <Routers />
-      </>
-  )
-}
+    <>
+      <Routers />
+    </>
+  );
+};
 
-export default App
+export default App;
