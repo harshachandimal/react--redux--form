@@ -1,7 +1,8 @@
 import InputField from "../../Common/InputField.jsx";
 import PropTypes from "prop-types";
+import Button from "../../Common/Button.jsx";
 
-const ProductBasicDeatilsForm = ({handleNextForm}) => {
+const ProductBasicDeatilsForm = ({ handleNextForm }) => {
   return (
     <div>
       <form className="max-w-sm mx-auto ">
@@ -19,18 +20,16 @@ const ProductBasicDeatilsForm = ({handleNextForm}) => {
           name="product_price"
           tagName="Product Price"
         />
-        <button
-          type="button"
-          onClick={handleNextForm}
-          className="button"
-        >
-          Fill Warranty Details
-        </button>
+        <Button
+          executingMethod={handleNextForm}
+          buttonName="Fill Warranty Details"
+          buttonStyle= "blue-button"
+        />
       </form>
     </div>
   );
 };
 ProductBasicDeatilsForm.propTypes = {
-  handleNextForm: PropTypes.func.isRequired
-}
+  handleNextForm: PropTypes.func.isRequired,
+};
 export default ProductBasicDeatilsForm;

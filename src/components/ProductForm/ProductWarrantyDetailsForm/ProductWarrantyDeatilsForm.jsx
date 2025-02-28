@@ -1,14 +1,19 @@
 import InputField from "../../Common/InputField.jsx";
 import PropTypes from "prop-types";
+import Button from "../../Common/Button.jsx";
 
-const ProductWarrantyDeatilsForm = ({handleBackForm}) => {
+const ProductWarrantyDeatilsForm = ({ handleBackForm }) => {
   return (
     <div>
       <form className="max-w-sm mx-auto ">
         <div>
-          <h1 className="font-bold text-center ">Product Basic Detaills</h1>
+          <h1 className="font-bold text-center ">Product Warranty Detaills</h1>
         </div>
-        <InputField type="text" name="WarrantyPeriod" tagName="Warranty Period" />
+        <InputField
+          type="text"
+          name="WarrantyPeriod"
+          tagName="Warranty Period"
+        />
         <InputField
           type="date"
           name="WarrantyStartDate"
@@ -19,9 +24,8 @@ const ProductWarrantyDeatilsForm = ({handleBackForm}) => {
           name="WarrantyEndDate"
           tagName="Warranty End Date"
         />
-        <button type="button" className="button" onClick={handleBackForm}>
-          Back
-        </button>
+        <Button executingMethod={handleBackForm} buttonName="Back"
+                buttonStyle="dark-button"/>
       </form>
     </div>
   );
@@ -29,6 +33,6 @@ const ProductWarrantyDeatilsForm = ({handleBackForm}) => {
 
 ProductWarrantyDeatilsForm.propTypes = {
   handleBackForm: PropTypes.func.isRequired,
-}
+};
 
 export default ProductWarrantyDeatilsForm;
