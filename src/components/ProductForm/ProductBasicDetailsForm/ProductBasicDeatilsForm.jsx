@@ -1,14 +1,13 @@
 import InputField from "../../Common/InputField.jsx";
 import PropTypes from "prop-types";
 import Button from "../../Common/Button.jsx";
+import FormHead from "../../Common/FormHead.jsx";
 
 const ProductBasicDeatilsForm = ({ handleNextForm }) => {
   return (
     <div>
       <form className="max-w-sm mx-auto ">
-        <div>
-          <h1 className="font-bold text-center ">Product Basic Detaills</h1>
-        </div>
+        <FormHead formName= "Product Basic Deatils"/>
         <InputField type="text" name="ProductName" tagName="Product Name" />
         <InputField
           type="number"
