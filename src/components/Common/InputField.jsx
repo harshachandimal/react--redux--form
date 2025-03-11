@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const InputField = ({type, name, tagName}) => {
+const InputField = ({type, name, tagName, handleInputChange}) => {
   return (
     <div className="mb-5">
       <label
@@ -15,11 +15,13 @@ const InputField = ({type, name, tagName}) => {
         name={name}
         className="input-field"
         required
+        onChange={handleInputChange}
       />
     </div>
   );
 };
 InputField.propTypes = {
+    handleInputChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   tagName: PropTypes.string.isRequired,

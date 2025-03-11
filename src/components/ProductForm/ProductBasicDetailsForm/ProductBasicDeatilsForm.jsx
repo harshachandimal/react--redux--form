@@ -2,33 +2,64 @@ import InputField from "../../Common/InputField.jsx";
 import PropTypes from "prop-types";
 import Button from "../../Common/Button.jsx";
 import FormHead from "../../Common/FormHead.jsx";
+import {useDispatch} from "react-redux";
+import {storeProductDetails} from "../../../utilities/ProductBasics.js";
 
-const ProductBasicDeatilsForm = ({ handleNextForm }) => {
+const ProductBasicDeatilsForm = ({
+  setProductDetails,
+  handleNextForm,
+  ProductDetails,
+}) => {
+
+  const dispatch = useDispatch();
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
+    setProductDetails((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(storeProductDetails(ProductDetails))
+    handleNextForm()
+
+  }
   return (
     <div>
-      <form className="max-w-sm mx-auto ">
-        <FormHead formName= "Product Basic Deatils"/>
-        <InputField type="text" name="ProductName" tagName="Product Name" />
+      <form className="max-w-sm mx-auto " onSubmit={handleSubmit}>
+        <FormHead formName="Product Basic Deatils" />
+        <InputField
+          type="text"
+          name="ProductName"
+          tagName="Product Name"
+          handleInput={handleInputChange}
+        />
         <InputField
           type="number"
           name="product_quantity"
           tagName="Product Quantity"
+          handleInput={handleInputChange}
         />
         <InputField
           type="number"
           name="product_price"
           tagName="Product Price"
+          handleInput={handleInputChange}
         />
         <Button
-          executingMethod={handleNextForm}
+
           buttonName="Fill Warranty Details"
-          buttonStyle= "blue-button"
+          buttonStyle="blue-button"
         />
       </form>
     </div>
   );
 };
 ProductBasicDeatilsForm.propTypes = {
+  ProductDetails: PropTypes.object.isRequired,
+  setProductDetails: PropTypes.func.isRequired,
   handleNextForm: PropTypes.func.isRequired,
 };
 export default ProductBasicDeatilsForm;
