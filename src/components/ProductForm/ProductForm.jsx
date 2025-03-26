@@ -1,5 +1,5 @@
-import ProductBasicDeatilsForm from "./ProductBasicDetailsForm/ProductBasicDeatilsForm.jsx";
-import ProductWarrantyDeatilsForm from "./ProductWarrantyDetailsForm/ProductWarrantyDeatilsForm.jsx";
+import ProductBasicDetailsForm from "./ProductBasicDetailsForm/ProductBasicDetailsForm.jsx";
+import ProductWarrantyDetailsForm from "./ProductWarrantyDetailsForm/ProductWarrantyDetailsForm.jsx";
 import { useState } from "react";
 
 const ProductForm = () => {
@@ -9,6 +9,7 @@ const ProductForm = () => {
     product_quantity: 0,
     product_price: 0,
   });
+   console.log("Updated Product Details:", ProductDetails)
 
   const handleNextForm = () => {
     setForm((prevState) => prevState + 1);
@@ -20,13 +21,13 @@ const ProductForm = () => {
 
   const productFormMapper = {
     1: (
-      <ProductBasicDeatilsForm
+      <ProductBasicDetailsForm
         ProductDetails={ProductDetails}
         handleNextForm={handleNextForm}
         setProductDetails={setProductDetails}
       />
     ),
-    2: <ProductWarrantyDeatilsForm handleBackForm={handleBackForm} />,
+    2: <ProductWarrantyDetailsForm handleBackForm={handleBackForm} />,
   };
 
   const RenderForms = () => {
