@@ -9,7 +9,7 @@ const ProductForm = () => {
     product_quantity: 0,
     product_price: 0,
   });
-   console.log("Updated Product Details:", ProductDetails)
+
 
   const handleNextForm = () => {
     setForm((prevState) => prevState + 1);

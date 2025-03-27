@@ -10,9 +10,13 @@ export const ProductBasicsSlice= createSlice({
             console.log(action.payload);
 
             state.productDetails = action.payload;
-        }
-    }
+        },
+        resetProductDetails: (state) => {
+            state.productDetails = {}
+        },
+
+    },
 })
-export const {storeProductDetails} = ProductBasicsSlice.actions;
+export const {storeProductDetails, resetProductDetails} = ProductBasicsSlice.actions;
 
 export default ProductBasicsSlice.reducer

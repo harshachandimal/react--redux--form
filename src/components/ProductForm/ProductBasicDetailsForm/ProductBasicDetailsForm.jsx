@@ -3,21 +3,25 @@ import PropTypes from "prop-types";
 import Button from "../../Common/Button.jsx";
 import FormHead from "../../Common/FormHead.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import { storeProductDetails } from "../../../utilities/ProductBasics.js";
-import {useEffect, useState} from "react";
+import {
+  resetProductDetails,
+  storeProductDetails,
+} from "../../../utilities/ProductBasics.js";
+import { useEffect, useState } from "react";
 
 const ProductBasicDetailsForm = ({
   setProductDetails,
   handleNextForm,
   ProductDetails,
 }) => {
-  const [existingProductDetails, setExistingProductDetails] = useState({})
+  const [existingProductDetails, setExistingProductDetails] = useState({});
   const dispatch = useDispatch();
-  const savedProductDetails = useSelector((state) => state.ProductDetails.productDetails);
+  const savedProductDetails = useSelector(
+    (state) => state.ProductDetails.product.productDetails,
+  );
   useEffect(() => {
-    setExistingProductDetails(savedProductDetails)
-
-  },[savedProductDetails])
+    setExistingProductDetails(savedProductDetails);
+  }, [savedProductDetails]);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     console.log(name, value);
@@ -29,33 +33,39 @@ const ProductBasicDetailsForm = ({
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(storeProductDetails(ProductDetails));
+    dispatch(storeProductDetails(existingProductDetails));
     handleNextForm();
   };
 
+  const reSetDetails = () => {
+    dispatch(resetProductDetails);
+  };
 
-  console.log(existingProductDetails);
   return (
     <div>
       <form className="max-w-sm mx-auto " onSubmit={handleSubmit}>
         <FormHead formName="Product Basic Deatils" />
+
+        <button type="button" onClick={reSetDetails} className="red-button">
+          Reset
+        </button>
         <InputField
           type="text"
-          value = {existingProductDetails.ProductName}
+          value={existingProductDetails.ProductName}
           name="ProductName"
           tagName="Product Name"
           handleInputChange={handleInputChange}
         />
         <InputField
           type="number"
-          value = {existingProductDetails.product_quantity}
+          value={existingProductDetails.product_quantity}
           name="product_quantity"
           tagName="Product Quantity"
           handleInputChange={handleInputChange}
         />
         <InputField
           type="number"
-          value = {existingProductDetails.product_price}
+          value={existingProductDetails.product_price}
           name="product_price"
           tagName="Product Price"
           handleInputChange={handleInputChange}
